@@ -2,11 +2,12 @@
   box-sizing: border-box;
 }
 
-header {
-  text-align: center;
-}
-
 body {
-  background-color: black;
   color: white;
+  background-image: url("Images/HalloweenStartPic.jpg");
+  background-color: black;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: "Yeon Sung", cursive;
+  font-size: 25px;
 }
