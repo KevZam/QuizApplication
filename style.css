@@ -4,16 +4,70 @@
 
 body {
   color: white;
-  background-image: url("Images/HalloweenStartPic.jpg");
+  /* background-image: url("Images/Banner.jpg"); */
   background-color: black;
   background-repeat: no-repeat;
   background-position: center;
   font-family: "Yeon Sung", cursive;
   font-size: 25px;
+  line-height: 2;
 }
 
-button{
-font-family: "Yeon Sung", cursive;
+button {
+  font-family: "Yeon Sung", cursive;
   font-size: 25px;
   margin-top: 15px;
+}
+
+.side-picture {
+  height: 100%;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.q-s {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  color: yellow;
+}
+
+.s {
+  margin-left: 300px;
+}
+
+.start-button {
+  margin-top: 200px;
+  font-size: 50px;
+}
+
+button:hover {
+  background-color: gold;
+  cursor: pointer;
+}
+.start-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.start-view h1 {
+  color: yellow;
+}
+.container {
+  margin-top: 50px;
+}
+
+p {
+  font-size: 25px;
+}
+
+.results-view {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

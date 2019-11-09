@@ -54,13 +54,16 @@ const STORE = {
 // a function to start the quiz when the start button is clicked
 function startQuiz() {
   // clear the start-view page when start-button is clicked
+  $(".score-and-question").show();
   updateQuestion();
   generateForm();
+
   generateQuestion(STORE.currentQuestion);
 }
 
 $(`.start-button`).on("click", function(event) {
   startQuiz();
+  $(".q-s").show();
   $(`.start-view`).hide();
   $(`.question-view`).show();
 });
@@ -77,28 +80,35 @@ function generateForm() {
   <button type="button" class="next-button">Next</button>
   </form>`)
   );
+
+  $(".questionText").css("color", "yellow");
+  $(".next-button").hide();
   $(".submit-button").on("click", function(event) {
     event.preventDefault();
     let userChoice = $("input[name=answer]:checked").val();
-    console.log(`userChoice is ` + userChoice);
-    console.log("correctAnswer is " + correctAnswer);
     //TODO fix bug allowing multiple submissions
     if (userChoice) {
       if (userChoice == correctAnswer) {
-        console.log("correct!");
         rightAnswer();
         updateScore();
+        $(".submit-button").hide();
+        $(".next-button").show();
       } else {
-        console.log("incorrect");
         wrongAnswer();
+        $(".submit-button").hide();
+        $(".next-button").show();
       }
     } else {
+      alert("Please select a choice.");
     }
   });
+
   $(".next-button").on("click", function(event) {
     if (STORE.currentQuestion < 5) {
       updateQuestion();
       generateQuestion(STORE.currentQuestion);
+      $(".submit-button").show();
+      $(".next-button").hide();
     } else {
       showResults();
     }
@@ -116,8 +126,10 @@ function generateQuestion(currentQuestion) {
   answers.forEach(element => {
     $(".questions").append(
       `<div>
-      <input class="answer" type="radio" name="answer" required value="${element}">${element}
-     </div>`
+        <label>
+      <input class="answer test" type="radio" name="answer" value="${element}">
+      ${element} </label>
+      </div>`
     );
   });
 }
@@ -129,23 +141,25 @@ function updateScore() {
 
 function updateQuestion() {
   let questionNum = ++STORE.currentQuestion;
-  console.log(questionNum);
   $(".question-number").text(questionNum);
   $(".response-view").html(``);
 }
 
 function wrongAnswer() {
+  $(".response-view").show();
   $(".response-view").html(`<h2 class="feedback">Incorrect</h2>`);
+  $("h2").css("color", "red");
   $("input[name=answer]").attr("disabled", true);
 }
 
 function rightAnswer() {
+  $(".response-view").show();
   $(".response-view").html(`<h2 class="feedback">Correct!</h2>`);
+  $("h2").css("color", "green");
   $("input[name=answer]").attr("disabled", true);
 }
 
 function showResults() {
-  console.log("Showing results");
   $(".question-view").hide();
   $(".response-view").hide();
   $(".results-view").show();
@@ -157,6 +171,7 @@ function showResults() {
 $(`.results-view`).on("click", ".reset-button", function(event) {
   STORE.currentScore = 0;
   STORE.currentQuestion = 0;
+  $(".q-s").hide();
   $(".question-number").text(0);
   $(".score").text(0);
   $(`.start-view`).show();
@@ -164,6 +179,9 @@ $(`.results-view`).on("click", ".reset-button", function(event) {
   $(".results-view").hide();
 });
 
-function makeQuizApp() {}
+function startQuizApp() {
+  $(".score-and-question").hide();
+  $("q-s").hide();
+}
 
-$(makeQuizApp);
+$(startQuizApp);
