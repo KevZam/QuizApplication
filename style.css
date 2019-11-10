@@ -36,7 +36,7 @@ button {
 }
 
 .s {
-  margin-left: 300px;
+  margin-left: 225px;
 }
 
 .start-button {
@@ -70,4 +70,25 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+@media only screen and (min-width: 360px) {
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .flex-container {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .flex-container {
+    display: flex;
+    flex-direction: row;
+  }
 }

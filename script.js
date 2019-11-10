@@ -76,8 +76,8 @@ function generateForm() {
       </legend>
       <div class="questions"> </div> 
     </fieldset>
-    <button type="submit" class="submit-button">Submit</button>
-  <button type="button" class="next-button">Next</button>
+    <button type="submit" role="button" class="submit-button">Submit</button>
+  <button type="button" role="button" class="next-button">Next</button>
   </form>`)
   );
 
